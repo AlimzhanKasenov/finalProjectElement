@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Категории</h1>
+                    <h1 class="m-0">Цвета</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -35,6 +35,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Наименование</th>
+                                    <th>Цвет</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -42,6 +43,7 @@
                                     <tr>
                                         <td>{{ $color->id }}</td>
                                         <td><a href="{{ route('color.show', $color->id) }}">{{ $color->title }}</a></td>
+                                        <td><div style="width: 16px; height: 16px; background: {{'#' . $color->col}}"></div></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
