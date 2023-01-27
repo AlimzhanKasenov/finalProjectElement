@@ -3,10 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>AdminPanel | Dashboard</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('adminPanel/plugins/select2/css/select2.min.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('adminPanel/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Theme style -->
@@ -143,7 +145,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/gallery.html" class="nav-link">
+                        <a href="{{ route('products.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-gem"></i>
                             <p>Продукты</p>
                         </a>
@@ -211,5 +213,11 @@
 <script src="{{ asset('adminPanel/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminPanel/dist/js/adminlte.js') }}"></script>
+<script src="{{ asset('adminPanel/plugins/select2/js/select2.full.min.js') }}"></script>
+<script>
+    $('.tags').select2()
+    $('.colors').select2()
+</script>
+
 </body>
 </html>
