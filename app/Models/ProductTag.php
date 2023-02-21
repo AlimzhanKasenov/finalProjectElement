@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductTag extends Model
 {
-    protected $table = 'product_tag';
+    protected $table = 'product_tags';
     protected $guarded = false;
 }

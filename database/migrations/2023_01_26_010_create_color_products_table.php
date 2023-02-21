@@ -13,12 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('color_product', function (Blueprint $table) {
+        Schema::create('color_products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('color_id')->nullable()->index()->constrained('colors');
             $table->foreignId('product_id')->nullable()->index()->constrained('products');
 
             $table->timestamps();
+        });
+
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('colors')->nullable();
         });
     }
 
@@ -30,5 +34,8 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('color_products');
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('colors');
+        });
     }
 };

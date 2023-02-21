@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ColorProduct extends Model
 {
-    protected $table = 'color_product';
+    protected $table = 'color_products';
     protected $guarded = false;
 }

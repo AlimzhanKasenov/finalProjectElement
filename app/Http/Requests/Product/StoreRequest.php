@@ -19,19 +19,19 @@ class StoreRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, mixed>
+     * @return array
      */
     public function rules()
     {
         //required
         return [
-            'title' => 'nullable|string',
+            'title' => 'required|string',
             'description' => 'nullable|string',
             'content' => 'nullable|string',
             'preview_image' => 'nullable|string',
             'price' => 'nullable|integer',
             'count' => 'nullable|integer',
-            'is_published' => 'nullable|string',
+            'is_published' => 'boolean|string',
             'category_id' => 'nullable|string',
             'tags' => 'nullable|array',
             'colors' => 'nullable|array'
