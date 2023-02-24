@@ -44,6 +44,7 @@
                         <div class="input-group">
                             <div class="custom-file">
                                 <input name="preview_image" type="file" class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите файл</label>
                             </div>
                         </div>
                     </div>
