@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('count')->nullable();
             $table->boolean('is_published')->default(true);
 
-            $table->foreignId('category_id')->nullable();
+            $table->foreignId('category_id')->nullable()->index()->constrained('categories');
 
             $table->timestamps();
         });
