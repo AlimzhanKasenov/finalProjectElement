@@ -21,18 +21,18 @@ class StoreRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         //required
         return [
-            'title' => 'required|string',
-            'description' => 'nullable|string',
-            'content' => 'nullable|string',
-            'preview_image' => 'nullable|file',
-            'price' => 'nullable|integer',
-            'count' => 'nullable|integer',
-            'is_published' => 'boolean|string',
-            'category_id' => 'nullable|string',
+            'title' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+            'preview_image' => 'required',
+            'price' => 'required',
+            'count' => 'required',
+            'is_published' => 'nullable',
+            'category_id' => 'nullable',
             'tags' => 'nullable|array',
             'colors' => 'nullable|array'
         ];
