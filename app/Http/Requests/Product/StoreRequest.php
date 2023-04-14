@@ -21,7 +21,7 @@ class StoreRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(): array
+    public function rules()
     {
         //required
         return [

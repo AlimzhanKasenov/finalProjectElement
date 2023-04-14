@@ -5,7 +5,13 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
+use App\Models\Category;
+use App\Models\Color;
+use App\Models\ColorProduct;
 use App\Models\Product;
+use App\Models\ProductTag;
+use App\Models\Tag;
+use Illuminate\Support\Facades\Storage;
 
 class IndexController extends Controller
 {
@@ -17,7 +23,10 @@ class IndexController extends Controller
 
     public function create()
     {
-        return view('product.create');
+        $tags = Tag::all();
+        $colors = Color::all();
+        $categories = Category::all();
+        return view('product.create', compact('tags', 'colors', 'categories'));
     }
 
     public function delete(Product $product)
@@ -39,7 +48,30 @@ class IndexController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        Product::firstOrCreate($data);
+
+        $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+
+        $tagsIds = $data['tags'];
+        $colorsIds = $data['colors'];
+        unset($data['tags'], $data['colors']);
+
+        $product = Product::firstOrCreate([ //Надо переделать на артикул
+                'title' => $data['title']
+            ], $data);
+
+        foreach ($tagsIds as $tagsId){
+            ProductTag::firstOrCreate([
+                'product_id' => $product -> id,
+                'tag_id' => $tagsId
+            ]);
+        }
+
+        foreach ($colorsIds as $colorsId){
+            ColorProduct::firstOrCreate([
+                'product_id' => $product -> id,
+                'color_id' => $colorsId
+            ]);
+        }
         return redirect()->route('products.index');
     }
 

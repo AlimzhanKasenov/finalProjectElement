@@ -46,9 +46,9 @@ Route::group(['prefix' => 'users'], function (){
 
 Route::group(['prefix' => 'products'], function (){
     Route::get('/', [\App\Http\Controllers\Product\IndexController::class, 'index']) -> name('products.index');
-    Route::get('/create', [\App\Http\Controllers\Product\IndexController::class, 'create']) -> name('product.create');
     Route::post('/create', [\App\Http\Controllers\Product\IndexController::class, 'store']) -> name('product.store');
-    //Route::post('/', \App\Http\Controllers\Product\IndexController::class) -> name('product.store');
+    Route::get('/create', [\App\Http\Controllers\Product\IndexController::class, 'create']) -> name('product.create');
+    //Route::post('/', [\App\Http\Controllers\Product\IndexController::class, 'store']) -> name('product.store');
     Route::get('/{product}/edit', [\App\Http\Controllers\Product\IndexController::class, 'edit']) -> name('product.edit');
     Route::get('/{product}', [\App\Http\Controllers\Product\IndexController::class, 'show']) -> name('product.show');
     Route::patch('/{product}', [\App\Http\Controllers\Product\IndexController::class, 'update']) -> name('product.update');
