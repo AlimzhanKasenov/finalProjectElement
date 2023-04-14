@@ -45,7 +45,7 @@ class IndexController extends Controller
         return view('product.show', compact('product'));
     }
 
-    public function __invoke(StoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $data = $request->validated();
 
