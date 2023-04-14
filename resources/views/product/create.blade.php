@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('product.store') }}" method="post"> <!--a>enctype="multipart/form-data"</a-->
                     @csrf
                     <div class="form-group">
                         <input type="text" name="title" class="form-control" placeholder="Наименование">
@@ -35,10 +35,10 @@
                         <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Контент"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="price" class="form-control" placeholder="Цена">
+                        <input type="number" name="price" class="form-control" placeholder="Цена">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="count" class="form-control" placeholder="Количество на складе">
+                        <input type="number" name="count" class="form-control" placeholder="Количество на складе">
                     </div>
                     <!--div class="form-group">
                         <div class="input-group">
