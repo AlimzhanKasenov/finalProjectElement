@@ -49,14 +49,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <select name="tags[]" class="tags" multiple="multiple" data-placeholder="Выбирите тэг"
-                            style="width: 100%;">
-                        @foreach($tags as $tag)
-                            <option  value="{{$tag->id}}">{{$tag->title}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
                     <select name="colors[]" class="colors" multiple="multiple" data-placeholder="Выбирите цвет"
                             style="width: 100%;">
                         @foreach($colors as $color)

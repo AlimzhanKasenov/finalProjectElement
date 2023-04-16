@@ -157,18 +157,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('tags.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-tags"></i>
-                            <p>Тэги</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('colors.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-palette"></i>
-                            <p>Цвета</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="{{ route('users.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>Пользователи</p>

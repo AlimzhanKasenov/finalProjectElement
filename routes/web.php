@@ -24,16 +24,6 @@ Route::group(['prefix' => 'colors'], function (){
     Route::delete('/{color}', [\App\Http\Controllers\Color\IndexController::class, 'delete']) -> name('color.delete');
 });
 
-Route::group(['prefix' => 'tags'], function (){
-    Route::get('/', [\App\Http\Controllers\Tag\IndexController::class, 'index']) -> name('tags.index');
-    Route::get('/create', [\App\Http\Controllers\Tag\IndexController::class, 'create']) -> name('tag.create');
-    Route::post('/', [\App\Http\Controllers\Tag\IndexController::class, 'store']) -> name('tag.store');
-    Route::get('/{tag}/edit', [\App\Http\Controllers\Tag\IndexController::class, 'edit']) -> name('tag.edit');
-    Route::get('/{tag}', [\App\Http\Controllers\Tag\IndexController::class, 'show']) -> name('tag.show');
-    Route::patch('/{tag}', [\App\Http\Controllers\Tag\IndexController::class, 'update']) -> name('tag.update');
-    Route::delete('/{tag}', [\App\Http\Controllers\Tag\IndexController::class, 'delete']) -> name('tag.delete');
-});
-
 Route::group(['prefix' => 'users'], function (){
     Route::get('/', [\App\Http\Controllers\User\IndexController::class, 'index']) -> name('users.index');
     Route::get('/create', [\App\Http\Controllers\User\IndexController::class, 'create']) -> name('user.create');

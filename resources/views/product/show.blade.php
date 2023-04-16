@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Категория</h1>
+                    <h1 class="m-0">Редактировать категорию</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -23,35 +23,50 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header d-flex p-3">
-                            <div class="mr-3 ">
-                                <a href="{{ route('category.edit', $category->id) }}" class="btn btn-primary">
-                                    Редактировать</a>
-                            </div>
-                            <form action="{{ route('category.delete', $category->id) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                <input type="submit" class="btn btn-danger" value="Удалить">
-                            </form>
-                            </div>
-                        <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap">
-                                <tbody>
-                                    <tr>
-                                        <td>ID</td>
-                                        <td>{{ $category->id }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Наименование</td>
-                                        <td>{{ $category->title }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                <form action="{{ route('category.update', $product->id) }}" method="post">
+                    @csrf
+                    @method('patch')
+                    <div class="form-group">
+                        <label>Наименование</label>
+                        <input type="text" name="title" value="{{ $product->title }}" class="form-control">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label>Описание</label>
+                        <input type="text" name="description" value="{{ $product->description }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Контент</label>
+                        <input type="text" name="content" value="{{ $product->content }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Цена</label>
+                        <input type="text" name="price" value="{{ $product->price }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Колличество</label>
+                        <input type="text" name="count" value="{{ $product->count }}" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <select name="tags[]" class="tags" multiple="multiple" data-placeholder="Выбирите тэг"
+                                style="width: 100%;">
+                            @foreach($tags as $tag)
+                                <option  value="{{$tag->id}}">{{$tag->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select name="colors[]" class="colors" multiple="multiple" data-placeholder="Выбирите цвет"
+                                style="width: 100%;">
+                            @foreach($colors as $color)
+                                <option value="{{$color->id}}">{{$color->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Редактировать">
+                    </div>
+                </form>
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
