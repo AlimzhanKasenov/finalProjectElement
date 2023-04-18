@@ -18,6 +18,16 @@
     </div>
     <!-- /.content-header -->
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -45,6 +55,17 @@
                     <div class="form-group">
                         <label>Колличество</label>
                         <input type="text" name="count" value="{{ $product->count }}" class="form-control">
+                    </div>
+
+                    <img src="{{ Storage::disk('public')->url($product->preview_image) }}" class="img-thumbnail">
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input name="preview_image" type="file" class="custom-file-input" id="exampleInputFile" value="{{ old('preview_image') }}">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите файл</label>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
