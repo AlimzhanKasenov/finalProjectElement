@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <form action="{{ route('category.update', $product->id) }}" method="post">
+                <form action="{{ route('product.update', $product->id) }}" method="post">
                     @csrf
                     @method('patch')
                     <div class="form-group">
@@ -48,21 +48,18 @@
                     </div>
 
                     <div class="form-group">
-                        <select name="tags[]" class="tags" multiple="multiple" data-placeholder="Выбирите тэг"
-                                style="width: 100%;">
-                            @foreach($tags as $tag)
-                                <option  value="{{$tag->id}}">{{$tag->title}}</option>
+                        <label>Категория</label>
+                        <select name="category_id" class="form-control select2" style="width: 100%;">
+                            @foreach($categories as $category)
+                                <p>{{$categories}}</p>
+                                @if($category->id == $product->category_id)
+                                <option selected disabled value="{{$category->id}}">{{$category->title}}</option>
+                                @endif
+                                <option value="{{$category->id}}">{{$category->title}}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group">
-                        <select name="colors[]" class="colors" multiple="multiple" data-placeholder="Выбирите цвет"
-                                style="width: 100%;">
-                            @foreach($colors as $color)
-                                <option value="{{$color->id}}">{{$color->title}}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    <input name="is_published" value="{{$product->is_published}}" hidden="hidden">
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Редактировать">
                     </div>

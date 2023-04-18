@@ -6,11 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Category;
-use App\Models\Color;
-use App\Models\ColorProduct;
 use App\Models\Product;
-use App\Models\ProductTag;
-use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 
 class IndexController extends Controller
@@ -23,10 +19,8 @@ class IndexController extends Controller
 
     public function create()
     {
-        $tags = Tag::all();
-        $colors = Color::all();
         $categories = Category::all();
-        return view('product.create', compact('tags', 'colors', 'categories'));
+        return view('product.create', compact('categories'));
     }
 
     public function delete(Product $product)
@@ -42,9 +36,8 @@ class IndexController extends Controller
 
     public function show(Product $product)
     {
-        $tags = Tag::all();
-        $colors = Color::all();
-        return view('product.show', compact('tags', 'colors', 'product'));
+        $categories = Category::all();
+        return view('product.show', compact('product','categories'));
     }
 
     public function store(StoreRequest $request)
@@ -53,27 +46,10 @@ class IndexController extends Controller
 
         $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
 
-        $tagsIds = $data['tags'];
-        $colorsIds = $data['colors'];
-        unset($data['tags'], $data['colors']);
-
         $product = Product::firstOrCreate([ //Надо переделать на артикул
             'title' => $data['title']
         ], $data);
 
-        foreach ($tagsIds as $tagsId){
-            ProductTag::firstOrCreate([
-                'product_id' => $product -> id,
-                'tag_id' => $tagsId
-            ]);
-        }
-
-        foreach ($colorsIds as $colorsId){
-            ColorProduct::firstOrCreate([
-                'product_id' => $product -> id,
-                'color_id' => $colorsId
-            ]);
-        }
         return redirect()->route('products.index');
     }
 
@@ -81,7 +57,6 @@ class IndexController extends Controller
     {
         $data = $request->validated();
         $product->update($data);
-
         return view('product.show', compact('product'));
     }
 }

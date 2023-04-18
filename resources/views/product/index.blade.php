@@ -35,6 +35,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Наименование</th>
+                                    <th>Производитель</th>
+                                    <th>Описание</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -42,6 +44,8 @@
                                     <tr>
                                         <td>{{ $product->id }}</td>
                                         <td><a href="{{ route('product.show', $product->id) }}">{{ $product->title }}</a></td>
+                                        <td>{{ $product->description }}</td>
+                                        <td>{{ $product->content }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

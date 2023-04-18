@@ -23,11 +23,11 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <form action="{{ route('category.update', $category->id) }}" method="post">
+                <form action="{{ route('product.update', $product->id) }}" method="post">
                     @csrf
                     @method('patch')
                     <div class="form-group">
-                        <input type="text" name="title" value="{{ $category->title }}" class="form-control" placeholder="Наименование">
+                        <input type="text" name="title" value="{{ $product->title }}" class="form-control" placeholder="Наименование">
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Редактировать">
