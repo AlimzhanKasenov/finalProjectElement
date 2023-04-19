@@ -57,6 +57,7 @@ class IndexController extends Controller
     {
         $data = $request->validated();
         $product->update($data);
-        return view('product.show', compact('product'));
+        $categories = Category::all();
+        return view('product.show', compact('product', 'categories'));
     }
 }
